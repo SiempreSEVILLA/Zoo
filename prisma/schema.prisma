@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.sqlite"
+}
+
+model Zoo{
+  id String @id @default(cuid())
+  land String
+  stadt String
+  adresse String
+  baujahr Int
+  abteilungen Abteilung[]
+}
+
+model Abteilung{
+  id String @id @default(cuid())
+  zoo Zoo @relation(fields: [zooid], references: [id])
+  zooid String
+  name String
+  mitarbeiter Mitarbeiter[]
+  tiere Tier[]
+
+  @@unique([zooid, name])
+}
+
+model Tier{
+  id String @id @default(cuid())
+  art String
+  name String
+  abteilung Abteilung @relation(fields: [abteilungid], references: [id])
+  abteilungid String
+}
+
+model Mitarbeiter{
+  id String @id @default(cuid())
+  name String
+  abteilung Abteilung[]
+}

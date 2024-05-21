@@ -1,0 +1,25 @@
+{
+  "name": "zoo",
+  "version": "1.0.0",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.14.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "nodemon": "^3.1.0",
+    "prisma": "^5.14.0"
+  }
+}
